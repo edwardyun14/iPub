@@ -14,7 +14,7 @@
 
 @implementation OrdersViewController
 
--(void) JSONParse {
+-(void) getOrders:(NSTimer*) t {
 //    NSData *allPubData = [[NSData alloc] initWithContentsOfURL:
 //                              [NSURL URLWithString:@"http://campusdining.Vanderbilt.edu:7070/order?count=100"]];
     NSData *allPubData = [[NSData alloc] initWithContentsOfURL:
@@ -40,7 +40,24 @@
             [orderNumbers addObject:theOrder[@"orderNumber"]];
         }
         NSString *createdString = [orderNumbers componentsJoinedByString:@" "];
-        _displayText.text = createdString;
+        //_displayText.text = createdString;
+        UILabel *displayText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        displayText.text = createdString;
+        displayText.font = [UIFont systemFontOfSize:23];
+        displayText.textColor = [UIColor orangeColor];
+        displayText.backgroundColor = [UIColor clearColor];
+        displayText.numberOfLines = 1;
+
+        CGFloat textLength = [displayText.text sizeWithFont:displayText.font constrainedToSize:CGSizeMake(9999, 50) lineBreakMode:NSLineBreakByWordWrapping].width;
+        _myScrollView.contentSize = CGSizeMake(textLength + 20, 50); //or some value you like, you may have to try this out a few times
+        CGPoint origin = [_myScrollView contentOffset];
+        [_myScrollView setContentOffset:CGPointMake(origin.x, 0.0)];
+        
+        displayText.frame = CGRectMake(displayText.frame.origin.x, displayText.frame.origin.y, textLength, displayText.frame.size.height);
+        
+        [_myScrollView addSubview: displayText];
+        [self.view addSubview:_myScrollView];
+
         NSLog(@"string is %@", createdString);
     }
 }
@@ -49,7 +66,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brick_texture"]];
-    [self JSONParse];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getOrders:) userInfo:nil repeats:YES]; // the interval is in seconds...
+
 }
 
 - (void)didReceiveMemoryWarning {

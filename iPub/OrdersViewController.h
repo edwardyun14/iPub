@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel;
 @property (weak, nonatomic) IBOutlet UITextView *displayText;
+@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 
 @end
