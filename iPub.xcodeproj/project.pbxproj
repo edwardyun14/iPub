@@ -12,6 +12,7 @@
 		802A70D21A4B2DE100D8DEF2 /* HoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A70D11A4B2DE100D8DEF2 /* HoursViewController.m */; };
 		802C22FC1A5DABEB0031CABC /* SHOWG.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 802C22FB1A5DABD10031CABC /* SHOWG.TTF */; };
 		80A2CD8B1A5F5ADE0066581B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80A2CD8A1A5F5ADE0066581B /* Main.storyboard */; };
+		80A2CD8D1A6609A00066581B /* dotmatrix.tff in Resources */ = {isa = PBXBuildFile; fileRef = 80A2CD8C1A66093C0066581B /* dotmatrix.tff */; };
 		80C1BFB21A2579230026B861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1BFB11A2579230026B861 /* main.m */; };
 		80C1BFB51A2579230026B861 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1BFB41A2579230026B861 /* AppDelegate.m */; };
 		80C1BFB81A2579230026B861 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1BFB71A2579230026B861 /* ViewController.m */; };
@@ -39,6 +40,7 @@
 		802A70D31A4B2DEB00D8DEF2 /* HoursViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HoursViewController.h; sourceTree = "<group>"; };
 		802C22FB1A5DABD10031CABC /* SHOWG.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SHOWG.TTF; sourceTree = "<group>"; };
 		80A2CD8A1A5F5ADE0066581B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		80A2CD8C1A66093C0066581B /* dotmatrix.tff */ = {isa = PBXFileReference; lastKnownFileType = file; path = dotmatrix.tff; sourceTree = "<group>"; };
 		80C1BFAC1A2579230026B861 /* iPub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C1BFB01A2579230026B861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80C1BFB11A2579230026B861 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		802C22FA1A5DAB310031CABC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				80A2CD8C1A66093C0066581B /* dotmatrix.tff */,
 				802C22FB1A5DABD10031CABC /* SHOWG.TTF */,
 			);
 			name = Fonts;
@@ -233,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A2CD8D1A6609A00066581B /* dotmatrix.tff in Resources */,
 				802C22FC1A5DABEB0031CABC /* SHOWG.TTF in Resources */,
 				80C1BFC01A2579230026B861 /* LaunchScreen.xib in Resources */,
 				80C1BFBD1A2579230026B861 /* Images.xcassets in Resources */,

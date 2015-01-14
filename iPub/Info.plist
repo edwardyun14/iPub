@@ -32,6 +32,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>dotmatrix.tff</string>
 		<string>SHOWG.TTF</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>

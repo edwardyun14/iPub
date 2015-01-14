@@ -36,55 +36,67 @@
         NSArray *orders = allPubs[@"orders"];
         for ( NSDictionary *theOrder in orders )
         {
-            NSLog(@"----");
-            NSLog(@"OrderNumber: %@", theOrder[@"orderNumber"] );
-            NSLog(@"Time: %@", theOrder[@"timeCreated"] );
-            NSLog(@"----");
             [orderNumbers addObject:theOrder[@"orderNumber"]];
         }
         
         NSString *createdString = [orderNumbers componentsJoinedByString:@" "];
-        _displayText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-        _displayText.text = createdString;
-        _displayText.font = [UIFont systemFontOfSize:23];
-        _displayText.textColor = [UIColor orangeColor];
-        _displayText.backgroundColor = [UIColor clearColor];
-        _displayText.numberOfLines = 1;
-        
+        UILabel *displayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        displayLabel.text = createdString;
+        displayLabel.font = [UIFont systemFontOfSize:23];
+        displayLabel.textColor = [UIColor orangeColor];
+        displayLabel.backgroundColor = [UIColor clearColor];
+        displayLabel.numberOfLines = 1;
+        [displayLabel setFont:[UIFont fontWithName:@"DotMatrix" size:33]];
 
-        CGFloat textLength = [_displayText.text sizeWithFont:_displayText.font constrainedToSize:CGSizeMake(9999, 50) lineBreakMode:NSLineBreakByWordWrapping].width;
-        
+        CGFloat textLength = [displayLabel.text sizeWithFont:displayLabel.font constrainedToSize:CGSizeMake(9999, 50) lineBreakMode:NSLineBreakByWordWrapping].width;
         
         _myScrollView.contentSize = CGSizeMake(textLength, 50); //or some value you like, you may have to try this out a few times
         CGPoint origin = [_myScrollView contentOffset];
         [_myScrollView setContentOffset:CGPointMake(origin.x, 0.0)];
         
-        _displayText.frame = CGRectMake(_displayText.frame.origin.x, _displayText.frame.origin.y, textLength, _displayText.frame.size.height);
+        displayLabel.frame = CGRectMake(displayLabel.frame.origin.x, displayLabel.frame.origin.y, textLength, displayLabel.frame.size.height);
         
-        [_myScrollView addSubview: _displayText];
+        [_myScrollView addSubview: displayLabel];
         [self.view addSubview:_myScrollView];
         _myScrollView.backgroundColor = [UIColor clearColor];
 
-        NSLog(@"string is %@", createdString);
+        //NSLog(@"string is %@", createdString);
   
         // Delay execution of my block for 4.9 seconds.
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             //_displayText.text = @"";
-            [self.displayText removeFromSuperview];
+            displayLabel.text = @"";
             [_myScrollView setContentOffset:CGPointMake(0.0, 0.0)];
 
         });
         
     }
 }
+- (IBAction)orderButtonPressed:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pub Order:" message:@"What is your order number?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [[alert textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
+    [[alert textFieldAtIndex:0] becomeFirstResponder];
+    [alert addButtonWithTitle:@"Done"];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button Index = %ld",buttonIndex);
+    if (buttonIndex == 1) {  //Done
+        UITextField *orderNum = [alertView textFieldAtIndex:0];
+        NSLog(@"order #: %@", orderNum.text);
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+//  Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brick_texture"]];
     [self getOrders];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOrders:) userInfo:nil repeats:YES]; // the interval is in seconds...
-    
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOrders:) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
