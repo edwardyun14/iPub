@@ -20,6 +20,8 @@
 
 @property (nonatomic, copy) NSArray *orders;
 
+- (void)refreshOrders;
+
 @end
 
 @implementation OrdersViewController
@@ -52,6 +54,15 @@ static NSString *const cellId = @"cellId";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    NSTimer *timer = [NSTimer timerWithTimeInterval:15 target:self selector:@selector(refreshOrders:) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+}
+
+
+#pragma mark - Private
+
+- (void)refreshOrders:(NSTimer *) timer {
     __weak OrdersViewController *weakSelf = self;
     
     void (^successBlock)(NSArray *) = ^(NSArray *orders) {
