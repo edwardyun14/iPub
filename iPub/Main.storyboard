@@ -32,16 +32,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPub Title" translatesAutoresizingMaskIntoConstraints="NO" id="mzz-Tz-fxr">
-                                <rect key="frame" x="175" y="70" width="250" height="200"/>
+                                <rect key="frame" x="178" y="70" width="244" height="195.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="gRc-iT-Qtq"/>
-                                    <constraint firstAttribute="width" constant="250" id="lJX-Sw-eMy"/>
+                                    <constraint firstAttribute="width" secondItem="mzz-Tz-fxr" secondAttribute="height" multiplier="5:4" id="C8F-Lt-JUJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XrW-Og-0SF"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLZ-e0-bLk">
-                                <rect key="frame" x="222" y="425" width="156" height="60"/>
+                                <rect key="frame" x="220" y="422" width="160" height="61.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="edQ-ak-p80"/>
+                                    <constraint firstAttribute="width" secondItem="yLZ-e0-bLk" secondAttribute="height" multiplier="13:5" id="phM-lm-FEm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="22"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
@@ -54,7 +54,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-4n-YCt">
-                                <rect key="frame" x="222" y="515" width="156" height="60"/>
+                                <rect key="frame" x="220" y="513.5" width="160" height="61.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mdK-4n-YCt" secondAttribute="height" multiplier="13:5" id="24I-1c-LsO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="22"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
                                 <state key="normal" title="Hours" backgroundImage="wood_plank">
@@ -66,10 +69,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvc-48-wwp">
-                                <rect key="frame" x="222" y="335" width="156" height="60"/>
+                                <rect key="frame" x="220" y="330.5" width="160" height="61.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="156" id="hjr-qo-SAt"/>
-                                    <constraint firstAttribute="height" constant="60" id="jYH-Nj-It9"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="FHY-Ks-kjv"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="160" id="I6S-6g-VrW"/>
+                                    <constraint firstAttribute="width" secondItem="qvc-48-wwp" secondAttribute="height" multiplier="13:5" id="VUd-it-cga"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="22"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
@@ -84,37 +88,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mzz-Tz-fxr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="1Ai-mK-20n"/>
-                            <constraint firstAttribute="centerX" secondItem="mzz-Tz-fxr" secondAttribute="centerX" id="9Ls-6M-dfA"/>
-                            <constraint firstItem="qvc-48-wwp" firstAttribute="centerX" secondItem="mzz-Tz-fxr" secondAttribute="centerX" id="AII-PX-iv6"/>
-                            <constraint firstItem="mzz-Tz-fxr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="AtK-Ov-HHf"/>
-                            <constraint firstItem="mdK-4n-YCt" firstAttribute="height" secondItem="yLZ-e0-bLk" secondAttribute="height" id="HS2-70-Vvz"/>
-                            <constraint firstItem="mdK-4n-YCt" firstAttribute="width" secondItem="yLZ-e0-bLk" secondAttribute="width" id="IwT-89-pjJ"/>
-                            <constraint firstItem="mzz-Tz-fxr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="159" id="OZG-fp-ao4"/>
-                            <constraint firstItem="mdK-4n-YCt" firstAttribute="centerX" secondItem="yLZ-e0-bLk" secondAttribute="centerX" id="QkS-Mq-gow"/>
-                            <constraint firstItem="mzz-Tz-fxr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="159" id="Qkg-Lv-01l"/>
-                            <constraint firstItem="yLZ-e0-bLk" firstAttribute="leading" secondItem="qvc-48-wwp" secondAttribute="leading" id="U2v-qT-O3N"/>
-                            <constraint firstAttribute="centerX" secondItem="mzz-Tz-fxr" secondAttribute="centerX" id="Wy6-d3-gTk"/>
-                            <constraint firstItem="mdK-4n-YCt" firstAttribute="leading" secondItem="yLZ-e0-bLk" secondAttribute="leading" id="Ynk-dO-ivF"/>
-                            <constraint firstItem="yLZ-e0-bLk" firstAttribute="top" secondItem="qvc-48-wwp" secondAttribute="bottom" constant="30" id="jEJ-be-zjp"/>
-                            <constraint firstItem="mzz-Tz-fxr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="m8G-Wh-Nyk"/>
-                            <constraint firstItem="qvc-48-wwp" firstAttribute="top" secondItem="mzz-Tz-fxr" secondAttribute="bottom" constant="65" id="nbb-0A-q2k"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="mdK-4n-YCt" secondAttribute="bottom" constant="8" symbolic="YES" id="oXj-k6-kxo"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="mdK-4n-YCt" secondAttribute="bottom" constant="8" symbolic="YES" id="p9r-5e-crS"/>
-                            <constraint firstItem="mdK-4n-YCt" firstAttribute="top" secondItem="yLZ-e0-bLk" secondAttribute="bottom" constant="30" id="r1W-jT-9S3"/>
-                            <constraint firstItem="mdK-4n-YCt" firstAttribute="trailing" secondItem="yLZ-e0-bLk" secondAttribute="trailing" id="rMJ-04-UT3"/>
-                            <constraint firstItem="yLZ-e0-bLk" firstAttribute="trailing" secondItem="qvc-48-wwp" secondAttribute="trailing" id="t41-OV-8iq"/>
+                            <constraint firstItem="yLZ-e0-bLk" firstAttribute="width" secondItem="mdK-4n-YCt" secondAttribute="width" id="3Ls-Fm-pmh"/>
+                            <constraint firstAttribute="centerX" secondItem="qvc-48-wwp" secondAttribute="centerX" id="7c6-no-mCk"/>
+                            <constraint firstAttribute="centerX" secondItem="mdK-4n-YCt" secondAttribute="centerX" id="AAo-bP-SE5"/>
+                            <constraint firstItem="yLZ-e0-bLk" firstAttribute="width" secondItem="qvc-48-wwp" secondAttribute="width" id="B70-qc-cwq"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="mdK-4n-YCt" secondAttribute="bottom" constant="25" id="GCX-6f-J0G"/>
+                            <constraint firstItem="mdK-4n-YCt" firstAttribute="top" secondItem="yLZ-e0-bLk" secondAttribute="bottom" constant="30" id="Ho6-q3-fh9"/>
+                            <constraint firstItem="qvc-48-wwp" firstAttribute="top" secondItem="mzz-Tz-fxr" secondAttribute="bottom" constant="65" id="RF6-Wa-lu4"/>
+                            <constraint firstAttribute="centerX" secondItem="mzz-Tz-fxr" secondAttribute="centerX" id="XTX-rX-CwP"/>
+                            <constraint firstItem="yLZ-e0-bLk" firstAttribute="top" secondItem="qvc-48-wwp" secondAttribute="bottom" constant="30" id="Yeu-xf-e4h"/>
+                            <constraint firstItem="mzz-Tz-fxr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="szl-5i-IrQ"/>
+                            <constraint firstAttribute="centerX" secondItem="yLZ-e0-bLk" secondAttribute="centerX" id="vV1-Hv-5eD"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="AtK-Ov-HHf"/>
-                                <exclude reference="OZG-fp-ao4"/>
-                                <exclude reference="Qkg-Lv-01l"/>
-                                <exclude reference="m8G-Wh-Nyk"/>
-                                <exclude reference="oXj-k6-kxo"/>
-                                <exclude reference="p9r-5e-crS"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
