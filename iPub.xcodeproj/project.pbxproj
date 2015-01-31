@@ -13,6 +13,10 @@
 		802C22FC1A5DABEB0031CABC /* SHOWG.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 802C22FB1A5DABD10031CABC /* SHOWG.TTF */; };
 		80A2CD8B1A5F5ADE0066581B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80A2CD8A1A5F5ADE0066581B /* Main.storyboard */; };
 		80A2CD8D1A6609A00066581B /* dotmatrix.tff in Resources */ = {isa = PBXBuildFile; fileRef = 80A2CD8C1A66093C0066581B /* dotmatrix.tff */; };
+		80BD2D791A7D5EE200B12487 /* IPOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BD2D781A7D5EE200B12487 /* IPOrderCell.m */; };
+		80BD2D7D1A7D615F00B12487 /* IPOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80BD2D7C1A7D615F00B12487 /* IPOrderCell.xib */; };
+		80BD2D811A7D697900B12487 /* IPNetworkStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BD2D801A7D697900B12487 /* IPNetworkStore.m */; };
+		80BD2D851A7D74CD00B12487 /* IPOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BD2D841A7D74CD00B12487 /* IPOrder.m */; };
 		80C1BFB21A2579230026B861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1BFB11A2579230026B861 /* main.m */; };
 		80C1BFB51A2579230026B861 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1BFB41A2579230026B861 /* AppDelegate.m */; };
 		80C1BFB81A2579230026B861 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1BFB71A2579230026B861 /* ViewController.m */; };
@@ -41,6 +45,14 @@
 		802C22FB1A5DABD10031CABC /* SHOWG.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SHOWG.TTF; sourceTree = "<group>"; };
 		80A2CD8A1A5F5ADE0066581B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80A2CD8C1A66093C0066581B /* dotmatrix.tff */ = {isa = PBXFileReference; lastKnownFileType = file; path = dotmatrix.tff; sourceTree = "<group>"; };
+		80A2CD8E1A66E3D40066581B /* iPub_Development.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = iPub_Development.mobileprovision; sourceTree = "<group>"; };
+		80BD2D771A7D5EE200B12487 /* IPOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPOrderCell.h; sourceTree = "<group>"; };
+		80BD2D781A7D5EE200B12487 /* IPOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPOrderCell.m; sourceTree = "<group>"; };
+		80BD2D7C1A7D615F00B12487 /* IPOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IPOrderCell.xib; sourceTree = "<group>"; };
+		80BD2D7F1A7D697900B12487 /* IPNetworkStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPNetworkStore.h; sourceTree = "<group>"; };
+		80BD2D801A7D697900B12487 /* IPNetworkStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPNetworkStore.m; sourceTree = "<group>"; };
+		80BD2D831A7D74CD00B12487 /* IPOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPOrder.h; sourceTree = "<group>"; };
+		80BD2D841A7D74CD00B12487 /* IPOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPOrder.m; sourceTree = "<group>"; };
 		80C1BFAC1A2579230026B861 /* iPub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C1BFB01A2579230026B861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80C1BFB11A2579230026B861 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,9 +102,38 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		80BD2D761A7D5EA300B12487 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80BD2D771A7D5EE200B12487 /* IPOrderCell.h */,
+				80BD2D781A7D5EE200B12487 /* IPOrderCell.m */,
+				80BD2D7C1A7D615F00B12487 /* IPOrderCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		80BD2D7E1A7D68C600B12487 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				80BD2D7F1A7D697900B12487 /* IPNetworkStore.h */,
+				80BD2D801A7D697900B12487 /* IPNetworkStore.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		80BD2D821A7D74B500B12487 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80BD2D831A7D74CD00B12487 /* IPOrder.h */,
+				80BD2D841A7D74CD00B12487 /* IPOrder.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		80C1BFA31A2579230026B861 = {
 			isa = PBXGroup;
 			children = (
+				80A2CD8E1A66E3D40066581B /* iPub_Development.mobileprovision */,
 				80C1BFAE1A2579230026B861 /* iPub */,
 				80C1BFC81A2579230026B861 /* iPubTests */,
 				80C1BFAD1A2579230026B861 /* Products */,
@@ -111,6 +152,9 @@
 		80C1BFAE1A2579230026B861 /* iPub */ = {
 			isa = PBXGroup;
 			children = (
+				80BD2D821A7D74B500B12487 /* Models */,
+				80BD2D7E1A7D68C600B12487 /* Network */,
+				80BD2D761A7D5EA300B12487 /* Views */,
 				802C22F91A5DAB2D0031CABC /* Resources */,
 				80C1BFB31A2579230026B861 /* AppDelegate.h */,
 				80C1BFB41A2579230026B861 /* AppDelegate.m */,
@@ -241,6 +285,7 @@
 				80C1BFC01A2579230026B861 /* LaunchScreen.xib in Resources */,
 				80C1BFBD1A2579230026B861 /* Images.xcassets in Resources */,
 				80A2CD8B1A5F5ADE0066581B /* Main.storyboard in Resources */,
+				80BD2D7D1A7D615F00B12487 /* IPOrderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +306,11 @@
 				80C1BFB81A2579230026B861 /* ViewController.m in Sources */,
 				80C1BFB51A2579230026B861 /* AppDelegate.m in Sources */,
 				80C1BFB21A2579230026B861 /* main.m in Sources */,
+				80BD2D811A7D697900B12487 /* IPNetworkStore.m in Sources */,
+				80BD2D851A7D74CD00B12487 /* IPOrder.m in Sources */,
 				802A70CC1A4B2D8D00D8DEF2 /* OrdersViewController.m in Sources */,
 				802A70D21A4B2DE100D8DEF2 /* HoursViewController.m in Sources */,
+				80BD2D791A7D5EE200B12487 /* IPOrderCell.m in Sources */,
 				802A70CF1A4B2DA500D8DEF2 /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +428,7 @@
 				INFOPLIST_FILE = iPub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3920e658-7598-4a75-ad67-b7a141ee8eda";
 			};
 			name = Debug;
 		};
@@ -390,6 +439,7 @@
 				INFOPLIST_FILE = iPub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3920e658-7598-4a75-ad67-b7a141ee8eda";
 			};
 			name = Release;
 		};

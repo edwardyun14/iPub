@@ -10,9 +10,8 @@
 
 @interface OrdersViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *displayText;
-@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-
+@property (copy, nonatomic) NSNumber *myOrderNumber;
 
 @end

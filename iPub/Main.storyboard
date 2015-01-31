@@ -2,10 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SHOWG.TTF">
+            <string>ShowcardGothic-Reg</string>
+            <string>ShowcardGothic-Reg</string>
             <string>ShowcardGothic-Reg</string>
             <string>ShowcardGothic-Reg</string>
             <string>ShowcardGothic-Reg</string>
@@ -130,8 +133,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-VT-1Nb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-VT-1Nb">
                                 <rect key="frame" x="16" y="28" width="102" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="5ph-rP-yOG"/>
+                                    <constraint firstAttribute="width" constant="102" id="jMi-u7-AU9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="18"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
                                 <state key="normal" title="Back" backgroundImage="wood_plank">
@@ -142,8 +149,39 @@
                                     <segue destination="vXZ-lx-hvc" kind="show" id="1Ux-3H-tMJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6G-tv-z7K">
+                                <rect key="frame" x="198" y="270" width="204" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="HEr-NZ-bvz"/>
+                                    <constraint firstAttribute="height" constant="60" id="LNM-JK-kXV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="18"/>
+                                <size key="titleShadowOffset" width="3" height="3"/>
+                                <state key="normal" title="coming soon..." backgroundImage="wood_plank">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.15686274510000001" green="0.13725490200000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R6G-tv-z7K" firstAttribute="height" secondItem="aFN-VT-1Nb" secondAttribute="height" constant="1" id="1w4-28-iQU"/>
+                            <constraint firstItem="s9R-Sq-NkF" firstAttribute="top" secondItem="aFN-VT-1Nb" secondAttribute="bottom" constant="526" id="HhP-TJ-fDD"/>
+                            <constraint firstItem="aFN-VT-1Nb" firstAttribute="top" secondItem="5Js-F8-R7K" secondAttribute="bottom" constant="8" symbolic="YES" id="JXO-bz-BFJ"/>
+                            <constraint firstItem="R6G-tv-z7K" firstAttribute="centerX" secondItem="JSo-Qs-CHQ" secondAttribute="centerX" id="TiB-H7-NiX"/>
+                            <constraint firstItem="R6G-tv-z7K" firstAttribute="top" secondItem="5Js-F8-R7K" secondAttribute="bottom" constant="250" id="dtc-Ig-g0w"/>
+                            <constraint firstItem="aFN-VT-1Nb" firstAttribute="leading" secondItem="JSo-Qs-CHQ" secondAttribute="leadingMargin" id="ehr-2a-Gjn"/>
+                            <constraint firstItem="R6G-tv-z7K" firstAttribute="height" secondItem="JSo-Qs-CHQ" secondAttribute="height" id="l9l-2k-qJk"/>
+                            <constraint firstItem="R6G-tv-z7K" firstAttribute="centerY" secondItem="JSo-Qs-CHQ" secondAttribute="centerY" id="v30-nz-eFR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1w4-28-iQU"/>
+                                <exclude reference="dtc-Ig-g0w"/>
+                                <exclude reference="l9l-2k-qJk"/>
+                                <exclude reference="HhP-TJ-fDD"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpl-46-TR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -163,9 +201,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFt-QQ-1PD">
-                                <rect key="frame" x="16" y="43" width="102" height="46"/>
+                                <rect key="frame" x="24" y="28" width="102" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="cMs-P7-7Kp"/>
+                                    <constraint firstAttribute="width" secondItem="pFt-QQ-1PD" secondAttribute="height" multiplier="51:23" id="eI2-mf-Rep"/>
+                                    <constraint firstAttribute="height" constant="46" id="giH-rs-ug6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="22"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
@@ -178,10 +217,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVL-jS-zoB">
-                                <rect key="frame" x="178" y="249" width="244" height="59"/>
+                                <rect key="frame" x="178" y="506" width="244" height="59"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="Wad-Ck-OjZ"/>
-                                    <constraint firstAttribute="height" constant="59" id="XDe-Xs-BgG"/>
+                                    <constraint firstAttribute="width" secondItem="kVL-jS-zoB" secondAttribute="height" multiplier="244:59" id="FCH-wb-u9A"/>
+                                    <constraint firstAttribute="height" constant="59" id="tBX-Mx-7tx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="22"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
@@ -193,40 +232,45 @@
                                     <action selector="orderButtonPressed:" destination="rv2-KQ-Hrq" eventType="touchUpInside" id="fWn-6s-iln"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-hi-JaA">
-                                <rect key="frame" x="16" y="127" width="568" height="52"/>
-                                <color key="backgroundColor" red="0.0086979861149611096" green="0.0088918581604957581" blue="0.0087459551136280702" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="4Lo-dh-7Qp"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dLu-Mw-UPe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" red="1" green="0.34870990953947362" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="yhU-F2-tYf">
-                                <rect key="frame" x="28" y="134" width="544" height="45"/>
-                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-Zj-2Ue">
+                                <rect key="frame" x="24" y="106" width="552" height="352"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4SW-35-DD5">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="shZ-3j-hmc">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="rv2-KQ-Hrq" id="ucc-Qg-w7w"/>
+                                    <outlet property="delegate" destination="rv2-KQ-Hrq" id="Bxh-4C-mgS"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qGn-hi-JaA" firstAttribute="centerX" secondItem="kVL-jS-zoB" secondAttribute="centerX" id="9Xn-hx-1LG"/>
-                            <constraint firstItem="pFt-QQ-1PD" firstAttribute="top" secondItem="duT-Ek-1rr" secondAttribute="bottom" constant="23" id="Epr-u4-d3J"/>
-                            <constraint firstItem="yhU-F2-tYf" firstAttribute="bottom" secondItem="qGn-hi-JaA" secondAttribute="bottom" id="JFU-ot-BKM"/>
-                            <constraint firstItem="qGn-hi-JaA" firstAttribute="top" secondItem="vnz-cI-j5n" secondAttribute="top" constant="127" id="L68-13-waS"/>
-                            <constraint firstItem="pFt-QQ-1PD" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" id="Nhy-bb-1Zl"/>
-                            <constraint firstItem="qGn-hi-JaA" firstAttribute="top" secondItem="pFt-QQ-1PD" secondAttribute="bottom" constant="38" id="PIv-u7-XSq"/>
-                            <constraint firstItem="yhU-F2-tYf" firstAttribute="centerX" secondItem="qGn-hi-JaA" secondAttribute="centerX" id="PmH-no-fXi"/>
-                            <constraint firstItem="yhU-F2-tYf" firstAttribute="top" secondItem="qGn-hi-JaA" secondAttribute="top" constant="7" id="U0t-xf-kBZ"/>
-                            <constraint firstItem="wb1-Ph-7Nk" firstAttribute="top" secondItem="kVL-jS-zoB" secondAttribute="bottom" constant="292" id="WOS-kZ-QRv"/>
-                            <constraint firstItem="kVL-jS-zoB" firstAttribute="centerX" secondItem="vnz-cI-j5n" secondAttribute="centerX" id="aC4-5N-1ce"/>
-                            <constraint firstItem="qGn-hi-JaA" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" id="vZr-84-NyF"/>
-                            <constraint firstItem="yhU-F2-tYf" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" constant="12" id="xs6-2n-4dg"/>
+                            <constraint firstItem="pFt-QQ-1PD" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" constant="8" id="O5Q-Mt-L2K"/>
+                            <constraint firstAttribute="centerX" secondItem="kVL-jS-zoB" secondAttribute="centerX" id="OXz-6H-Sxg"/>
+                            <constraint firstItem="wb1-Ph-7Nk" firstAttribute="top" secondItem="kVL-jS-zoB" secondAttribute="bottom" constant="35" id="TRQ-LK-cFh"/>
+                            <constraint firstItem="kVL-jS-zoB" firstAttribute="top" secondItem="gqB-Zj-2Ue" secondAttribute="bottom" constant="48" id="dMc-nO-W4F"/>
+                            <constraint firstItem="pFt-QQ-1PD" firstAttribute="top" secondItem="duT-Ek-1rr" secondAttribute="bottom" constant="8" id="oT7-6e-aQa"/>
+                            <constraint firstItem="gqB-Zj-2Ue" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" constant="8" id="rpU-UL-0ka"/>
+                            <constraint firstAttribute="centerX" secondItem="gqB-Zj-2Ue" secondAttribute="centerX" id="wa8-il-G9A"/>
+                            <constraint firstItem="gqB-Zj-2Ue" firstAttribute="top" secondItem="pFt-QQ-1PD" secondAttribute="bottom" constant="32" id="xeh-pb-890"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="displayText" destination="qGn-hi-JaA" id="lgk-BG-d1c"/>
-                        <outlet property="myScrollView" destination="yhU-F2-tYf" id="I37-P9-FPs"/>
+                        <outlet property="collectionView" destination="gqB-Zj-2Ue" id="fSE-9d-Gb7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVU-gG-6mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,8 +289,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRq-kg-sEw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d2-SL-Hlg">
+                                <rect key="frame" x="198" y="270" width="204" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="CnY-Nw-ENU"/>
+                                    <constraint firstAttribute="width" constant="204" id="ohc-vl-74C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="18"/>
+                                <size key="titleShadowOffset" width="3" height="3"/>
+                                <state key="normal" title="coming soon..." backgroundImage="wood_plank">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.15686274510000001" green="0.13725490200000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRq-kg-sEw">
                                 <rect key="frame" x="16" y="28" width="102" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="ITv-RS-AOH"/>
+                                    <constraint firstAttribute="width" constant="102" id="zKg-Rh-J50"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ShowcardGothic-Reg" family="Showcard Gothic" pointSize="18"/>
                                 <size key="titleShadowOffset" width="3" height="3"/>
                                 <state key="normal" title="Back" backgroundImage="wood_plank">
@@ -259,6 +320,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1d2-SL-Hlg" firstAttribute="centerX" secondItem="PLO-MV-Gof" secondAttribute="centerX" id="190-Ug-jZT"/>
+                            <constraint firstItem="1d2-SL-Hlg" firstAttribute="centerY" secondItem="PLO-MV-Gof" secondAttribute="centerY" id="4Qr-z6-4hE"/>
+                            <constraint firstItem="YRq-kg-sEw" firstAttribute="leading" secondItem="PLO-MV-Gof" secondAttribute="leadingMargin" id="Iev-B2-hKe"/>
+                            <constraint firstItem="34C-aA-qsO" firstAttribute="top" secondItem="YRq-kg-sEw" secondAttribute="bottom" constant="526" id="Jby-iu-yiY"/>
+                            <constraint firstItem="YRq-kg-sEw" firstAttribute="top" secondItem="e7D-7d-Uut" secondAttribute="bottom" constant="8" symbolic="YES" id="bqc-gL-oKO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Jby-iu-yiY"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ec-DD-5Pl" userLabel="First Responder" sceneMemberID="firstResponder"/>

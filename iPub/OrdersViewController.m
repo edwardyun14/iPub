@@ -8,70 +8,90 @@
 
 #import "OrdersViewController.h"
 
-@interface OrdersViewController ()
+#import "IPNetworkStore.h"
+#import "IPOrder.h"
+#import "IPOrderCell.h"
+
+@interface OrdersViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+
+@property (nonatomic, strong) IPNetworkStore *networkStore;
+
+@property (nonatomic, copy) NSArray *orders;
 
 @end
 
 @implementation OrdersViewController
 
--(void) refreshOrders:(NSTimer*) t{
-    [self getOrders];
+#pragma mark - Static 
+
+static NSString *const cellId = @"cellId";
+
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    self.flowLayout.itemSize = CGSizeMake(50, 25);
+    self.flowLayout.minimumInteritemSpacing = 5;
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+
+    self.collectionView.collectionViewLayout = self.flowLayout;
+
+    [self.collectionView registerNib:[UINib nibWithNibName:@"IPOrderCell" bundle:[NSBundle mainBundle]]
+          forCellWithReuseIdentifier:cellId];
+
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brick_texture"]];
+    
+    self.networkStore = [[IPNetworkStore alloc] init];
 }
--(void) getOrders {
-//    NSData *allPubData = [[NSData alloc] initWithContentsOfURL:
-//                              [NSURL URLWithString:@"http://campusdining.Vanderbilt.edu:7070/order?count=100"]];
-    NSData *allPubData = [[NSData alloc] initWithContentsOfURL:
-    [NSURL URLWithString:@"http://vandyapps.com:7070/order?count=100"]];
-    NSError *error;
-    NSMutableDictionary *allPubs = [NSJSONSerialization
-                                       JSONObjectWithData:allPubData
-                                       options:NSJSONReadingMutableContainers
-                                    error:&error];
-    NSMutableArray *orderNumbers = [[NSMutableArray alloc] init];
-    if( error )
-    {
-        NSLog(@"%@", [error localizedDescription]);
-    }
-    else {
-        NSArray *orders = allPubs[@"orders"];
-        for ( NSDictionary *theOrder in orders )
-        {
-            [orderNumbers addObject:theOrder[@"orderNumber"]];
-        }
-        
-        NSString *createdString = [orderNumbers componentsJoinedByString:@" "];
-        UILabel *displayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-        displayLabel.text = createdString;
-        displayLabel.font = [UIFont systemFontOfSize:23];
-        displayLabel.textColor = [UIColor orangeColor];
-        displayLabel.backgroundColor = [UIColor clearColor];
-        displayLabel.numberOfLines = 1;
-        [displayLabel setFont:[UIFont fontWithName:@"DotMatrix" size:33]];
 
-        CGFloat textLength = [displayLabel.text sizeWithFont:displayLabel.font constrainedToSize:CGSizeMake(9999, 50) lineBreakMode:NSLineBreakByWordWrapping].width;
-        
-        _myScrollView.contentSize = CGSizeMake(textLength, 50); //or some value you like, you may have to try this out a few times
-        CGPoint origin = [_myScrollView contentOffset];
-        [_myScrollView setContentOffset:CGPointMake(origin.x, 0.0)];
-        
-        displayLabel.frame = CGRectMake(displayLabel.frame.origin.x, displayLabel.frame.origin.y, textLength, displayLabel.frame.size.height);
-        
-        [_myScrollView addSubview: displayLabel];
-        [self.view addSubview:_myScrollView];
-        _myScrollView.backgroundColor = [UIColor clearColor];
 
-        //NSLog(@"string is %@", createdString);
-  
-        // Delay execution of my block for 4.9 seconds.
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            //_displayText.text = @"";
-            displayLabel.text = @"";
-            [_myScrollView setContentOffset:CGPointMake(0.0, 0.0)];
-
-        });
-        
-    }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    __weak OrdersViewController *weakSelf = self;
+    
+    void (^successBlock)(NSArray *) = ^(NSArray *orders) {
+        weakSelf.orders = orders;
+        NSLog(@"SUCCESS! %@", orders);
+        [weakSelf.collectionView reloadData];
+    };
+    
+    void (^failureBlock)(NSError *) = ^(NSError *error) {
+        NSLog(@"FAILURE!! %@", error);
+    };
+    
+    [self.networkStore fetchOrdersWithSuccess:successBlock failure:failureBlock];
 }
+
+
+#pragma mark - UICollectionViewDataSource
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    IPOrderCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId
+                                                                  forIndexPath:indexPath];
+    
+    NSInteger orderNumber = [self.orders[indexPath.row] orderNumber];
+    
+    cell.orderNumber = orderNumber;
+    return cell;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"There are %li orders", self.orders.count);
+    return self.orders.count;
+}
+
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+
+
+
 - (IBAction)orderButtonPressed:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pub Order:" message:@"What is your order number?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -82,26 +102,33 @@
     [alert show];
 }
 
+
 -(void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    /*
     NSLog(@"Button Index = %ld",buttonIndex);
     if (buttonIndex == 1) {  //Done
         UITextField *orderNum = [alertView textFieldAtIndex:0];
-        NSLog(@"order #: %@", orderNum.text);
+        NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        _myOrderNumber = [formatter numberFromString:orderNum.text];
+        _orderlabel.text = orderNum.text;
+        _orderlabel.hidden = NO;
     }
+     */
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//  Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brick_texture"]];
-    [self getOrders];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOrders:) userInfo:nil repeats:YES];
+
+- (void)sendNotification {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: @"Your order is ready!"
+                                                            message:nil delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
 
 @end
