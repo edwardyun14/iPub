@@ -12,6 +12,8 @@
 
 @property (nonatomic, readonly) NSURL *url;
 
++ (instancetype)sharedInstance;
+
 - (void)fetchOrdersWithSuccess:(void(^)(NSArray *))success
                        failure:(void(^)(NSError *))failure;
 

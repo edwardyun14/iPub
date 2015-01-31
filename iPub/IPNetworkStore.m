@@ -25,10 +25,25 @@ static NSString *const urlString = @"http://campusdining.vanderbilt.edu:7070/ord
 
 static NSString *const urlString = @"http://vandyapps.com:7070/order?count=100";
 
+static IPNetworkStore *instance;
+
 #pragma mark - Getters/Setters
 
 - (NSURL *)url {
     return [NSURL URLWithString:urlString];
+}
+
+#pragma mark - Initializers
+
++ (instancetype)sharedInstance {
+
+    static dispatch_once_t token;
+    
+    dispatch_once(&token, ^{
+        instance = [[IPNetworkStore alloc] init];
+    });
+    
+    return instance;
 }
 
 #pragma mark - Private

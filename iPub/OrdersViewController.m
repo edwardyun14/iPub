@@ -14,9 +14,9 @@
 
 @interface OrdersViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, weak) IBOutlet UILabel *myOrderNumberLabel;
 
-@property (nonatomic, strong) IPNetworkStore *networkStore;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, copy) NSArray *orders;
 
@@ -46,8 +46,6 @@ static NSString *const cellId = @"cellId";
           forCellWithReuseIdentifier:cellId];
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brick_texture"]];
-    
-    self.networkStore = [[IPNetworkStore alloc] init];
 }
 
 
@@ -75,7 +73,7 @@ static NSString *const cellId = @"cellId";
         NSLog(@"FAILURE!! %@", error);
     };
     
-    [self.networkStore fetchOrdersWithSuccess:successBlock failure:failureBlock];
+    [[IPNetworkStore sharedInstance] fetchOrdersWithSuccess:successBlock failure:failureBlock];
 }
 
 
@@ -100,9 +98,6 @@ static NSString *const cellId = @"cellId";
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
-
-
-
 - (IBAction)orderButtonPressed:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pub Order:" message:@"What is your order number?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -116,17 +111,14 @@ static NSString *const cellId = @"cellId";
 
 -(void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    /*
     NSLog(@"Button Index = %ld",buttonIndex);
-    if (buttonIndex == 1) {  //Done
+    if (buttonIndex == 1) {
         UITextField *orderNum = [alertView textFieldAtIndex:0];
         NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        _myOrderNumber = [formatter numberFromString:orderNum.text];
-        _orderlabel.text = orderNum.text;
-        _orderlabel.hidden = NO;
+        _myOrderNumberLabel.text = orderNum.text;
+
     }
-     */
 }
 
 
@@ -137,9 +129,5 @@ static NSString *const cellId = @"cellId";
                                                   otherButtonTitles:nil, nil];
     [alertView show];
 }
-
-
-
-
 
 @end

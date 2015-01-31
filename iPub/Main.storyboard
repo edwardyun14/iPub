@@ -233,7 +233,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-Zj-2Ue">
-                                <rect key="frame" x="24" y="106" width="552" height="352"/>
+                                <rect key="frame" x="24" y="106" width="552" height="306.5"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4SW-35-DD5">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -256,21 +256,43 @@
                                     <outlet property="delegate" destination="rv2-KQ-Hrq" id="Bxh-4C-mgS"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96T-pp-KoF">
+                                <rect key="frame" x="258" y="460" width="84" height="26"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="8gR-HL-jE7"/>
+                                    <constraint firstAttribute="height" constant="26" id="dzN-aP-ZAr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Order Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdy-15-2WL">
+                                <rect key="frame" x="230" y="431.5" width="141" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="96T-pp-KoF" firstAttribute="top" secondItem="Bdy-15-2WL" secondAttribute="bottom" constant="8" id="0El-Wq-W9z"/>
+                            <constraint firstItem="Bdy-15-2WL" firstAttribute="top" secondItem="gqB-Zj-2Ue" secondAttribute="bottom" constant="19" id="Hvf-Hz-cyP"/>
+                            <constraint firstItem="gqB-Zj-2Ue" firstAttribute="top" secondItem="pFt-QQ-1PD" secondAttribute="bottom" constant="32" id="Ld9-Lw-8cb"/>
                             <constraint firstItem="pFt-QQ-1PD" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" constant="8" id="O5Q-Mt-L2K"/>
                             <constraint firstAttribute="centerX" secondItem="kVL-jS-zoB" secondAttribute="centerX" id="OXz-6H-Sxg"/>
+                            <constraint firstAttribute="centerX" secondItem="Bdy-15-2WL" secondAttribute="centerX" id="TJT-db-iII"/>
                             <constraint firstItem="wb1-Ph-7Nk" firstAttribute="top" secondItem="kVL-jS-zoB" secondAttribute="bottom" constant="35" id="TRQ-LK-cFh"/>
-                            <constraint firstItem="kVL-jS-zoB" firstAttribute="top" secondItem="gqB-Zj-2Ue" secondAttribute="bottom" constant="48" id="dMc-nO-W4F"/>
+                            <constraint firstAttribute="centerX" secondItem="gqB-Zj-2Ue" secondAttribute="centerX" id="nuc-lS-p1K"/>
                             <constraint firstItem="pFt-QQ-1PD" firstAttribute="top" secondItem="duT-Ek-1rr" secondAttribute="bottom" constant="8" id="oT7-6e-aQa"/>
-                            <constraint firstItem="gqB-Zj-2Ue" firstAttribute="leading" secondItem="vnz-cI-j5n" secondAttribute="leadingMargin" constant="8" id="rpU-UL-0ka"/>
-                            <constraint firstAttribute="centerX" secondItem="gqB-Zj-2Ue" secondAttribute="centerX" id="wa8-il-G9A"/>
-                            <constraint firstItem="gqB-Zj-2Ue" firstAttribute="top" secondItem="pFt-QQ-1PD" secondAttribute="bottom" constant="32" id="xeh-pb-890"/>
+                            <constraint firstItem="kVL-jS-zoB" firstAttribute="top" secondItem="96T-pp-KoF" secondAttribute="bottom" constant="20" id="rUo-4t-PDI"/>
+                            <constraint firstAttribute="centerX" secondItem="96T-pp-KoF" secondAttribute="centerX" id="s1V-yi-Nps"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gqB-Zj-2Ue" secondAttribute="trailing" constant="8" id="wiB-JO-EAT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gqB-Zj-2Ue" id="fSE-9d-Gb7"/>
+                        <outlet property="myOrderNumberLabel" destination="96T-pp-KoF" id="fJg-av-LLO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVU-gG-6mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
