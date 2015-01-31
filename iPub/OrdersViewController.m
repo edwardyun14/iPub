@@ -20,8 +20,6 @@
 
 @property (nonatomic, copy) NSArray *orders;
 
-- (void)refreshOrders;
-
 @end
 
 @implementation OrdersViewController
@@ -51,31 +49,30 @@ static NSString *const cellId = @"cellId";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[IPNetworkStore sharedInstance] beginListeningToServer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didFetchOrders:)
+                                                 name:IPNetworkStoreDidFetchOrders
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
-    NSTimer *timer = [NSTimer timerWithTimeInterval:15 target:self selector:@selector(refreshOrders:) userInfo:nil repeats:YES];
-    
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
 }
 
 
 #pragma mark - Private
 
-- (void)refreshOrders:(NSTimer *) timer {
-    __weak OrdersViewController *weakSelf = self;
-    
-    void (^successBlock)(NSArray *) = ^(NSArray *orders) {
-        weakSelf.orders = orders;
-        NSLog(@"SUCCESS! %@", orders);
-        [weakSelf.collectionView reloadData];
-    };
-    
-    void (^failureBlock)(NSError *) = ^(NSError *error) {
-        NSLog(@"FAILURE!! %@", error);
-    };
-    
-    [[IPNetworkStore sharedInstance] fetchOrdersWithSuccess:successBlock failure:failureBlock];
-}
+#pragma mark - NSNotification Observers
 
+
+- (void)didFetchOrders:(NSNotification *)notification {
+    self.orders = notification.userInfo[@"orders"];
+    [self.collectionView reloadData];
+}
 
 #pragma mark - UICollectionViewDataSource
 

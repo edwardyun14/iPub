@@ -10,7 +10,20 @@
 
 #import "IPOrder.h"
 
+NSString *const IPNetworkStoreDidFetchOrders = @"IPNetworkStoreDidFetchOrders";
+
+NSString *const IPNetworkStoreDidFailToFetchOrders = @"IPNetworkStoreDidFailToFetchOrders";
+
 @interface IPNetworkStore ()
+
+@property (nonatomic, assign) NSInteger orderNumber;
+
+@property (nonatomic, strong) NSTimer *timer;
+
+- (void)refreshOrders:(NSTimer *)timer;
+
+- (void)fetchOrdersWithSuccess:(void(^)(NSArray *))success
+                       failure:(void(^)(NSError *))failure;
 
 @end
 
@@ -19,6 +32,7 @@
 
 #pragma mark - Static 
 
+static NSTimeInterval refreshRate = 1;
 /*
 static NSString *const urlString = @"http://campusdining.vanderbilt.edu:7070/order?count=100";
 */
@@ -48,16 +62,31 @@ static IPNetworkStore *instance;
 
 #pragma mark - Private
 
+- (void)refreshOrders:(NSTimer *)timer {
+    NSLog(@"Refreshing orders");
+    void(^successBlock)(NSArray *) = ^(NSArray *orders) {
+        NSDictionary *userInfo = @{ @"orders": orders };
+        [[NSNotificationCenter defaultCenter] postNotificationName:IPNetworkStoreDidFetchOrders object:nil userInfo:userInfo];
+    };
+    
+    void (^failureBlock)(NSError *) = ^(NSError *error) {
+        NSDictionary *userInfo = @{ @"error": error };
+        [[NSNotificationCenter defaultCenter] postNotificationName:IPNetworkStoreDidFailToFetchOrders object:nil userInfo:userInfo];
+    };
+    
+    [self fetchOrdersWithSuccess:successBlock failure:failureBlock];
+}
 
-#pragma mark - Network
+
+#pragma mark Network
 
 - (void)fetchOrdersWithSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     NSURLSession *session = [NSURLSession sharedSession];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.url];
-
+    
     void (^completionTask) (NSData *, NSURLResponse *, NSError *) =
-        ^(NSData *data, NSURLResponse *response, NSError *error) {
+    ^(NSData *data, NSURLResponse *response, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
@@ -88,6 +117,38 @@ static IPNetworkStore *instance;
     
     [task resume];
     
+}
+
+#pragma mark - Public
+
+- (void)beginListeningToServer {
+    // Check if there is a timer running.
+    if (self.timer) {
+        // Throw an error, there is already a timer
+        // running.
+    }
+    else {
+        NSLog(@"Calling begin server");
+        self.timer = [NSTimer timerWithTimeInterval:refreshRate
+                                             target:self
+                                           selector:@selector(refreshOrders:)
+                                           userInfo:nil
+                                            repeats:YES];
+        
+        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+        
+        
+    }
+}
+
+- (void)registerOrderNumber:(NSInteger)orderNumber {
+    self.orderNumber = orderNumber;
+}
+
+- (void)unregisterOrderNumber:(NSInteger)orderNumber {
+    if (self.orderNumber == orderNumber) {
+        self.orderNumber = 0;
+    }
 }
 
 
